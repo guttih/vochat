@@ -1,13 +1,14 @@
 import  React  from "react";
-import { ChatRoom } from '../../screens'
+import { ChatLobby } from '../../screens'
 
 
-function Chat() {
+
+function ChatStart() {
     return (
         <div>
-            <ChatRoom />
+            <ChatLobby />
         </div>
     );
 }
 
-export default Chat
+export default ChatStart

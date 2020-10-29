@@ -1,1 +1,1 @@
-export { ChatRoom } from './ChatRoom'
+export { ChatLobby } from './ChatLobby'

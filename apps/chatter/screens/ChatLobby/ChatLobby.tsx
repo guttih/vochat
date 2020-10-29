@@ -8,7 +8,7 @@ import {
 import type { ChatRoom as ChatRoomType} from '../../components';
 
 
-export function ChatRoom() {
+export function ChatLobby() {
     const repo = new ChatRepository();
 
     const [rooms, setRooms] = useState<Array<ChatRoomType>>(null);
