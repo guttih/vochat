@@ -22,8 +22,8 @@ export function ChatLobby() {
     return (
         <div>
             <Message
-                Title="titill"
-                Text="texti"
+                Title="Chat lobby"
+                Text="Here you see the available chats.  Please click the chat you want to visit"
             />
 
             <ChatRoomList rooms={rooms} />

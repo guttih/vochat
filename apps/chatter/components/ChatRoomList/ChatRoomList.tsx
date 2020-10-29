@@ -7,11 +7,12 @@ export interface MessageProps {
 
 export function ChatRoomList(props: MessageProps) {
 
-    const showRoom = (room: ChatRoom) => {
+    const showRoomItem = (room: ChatRoom) => {
         return (
-            <li key={room.sessionId}>
-                <span className="room-name" data-description={room.description}>
-                    <a href={room.sessionId}>{room.name}</a>
+            <li key={room.id}>
+                <span className="room-name">
+                    <a href={'/chat/'+room.id}>{room.name}</a>
+                    <span className="room-description"> {room.description} </span>
                 </span>
             </li>
         )
@@ -22,7 +23,7 @@ export function ChatRoomList(props: MessageProps) {
             <ul>
                 {
                     props.rooms?.map(room => {
-                        return showRoom(room)
+                        return showRoomItem(room)
                     })
                 }
             </ul>

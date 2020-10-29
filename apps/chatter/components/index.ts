@@ -5,3 +5,5 @@ export { ChatRepository } from './ChatRepository'
 export type { ChatRoom } from './ChatRepository'
 
 export { ChatRoomList } from './ChatRoomList'
+
+export { ChatSession } from './ChatSession'

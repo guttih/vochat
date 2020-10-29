@@ -1,9 +1,38 @@
 {
-    "name":"Advania hjalparheimur",
-    "description":"Almenn hjálp sem advania býður uppá",
-    "rooms": [
-        {"sessionId":"1000000", "moderator":"Jón Jónsson", "name":"Office","description":"Get hjálpað með Microsoft office vörur"},
-        {"sessionId":"1000001", "moderator":"Valgerður",   "name":"Vefhjálp","description":"Get hjálpað með vef tengd atriði"},
-        {"sessionId":"1000002", "moderator":"Valgerður",   "name":"Almenn tölvuhjálp","description":"Almenn tölvuhjálp með windows, forrit eða annað sem komið getur upp."}
-    ]
+  "name": "Advania hjalparheimur",
+  "description": "Almenn hjálp sem advania býður uppá",
+  "rooms": [
+    {
+      "id": "1",
+      "moderator": "Jón Jónsson",
+      "name": "Office",
+      "description": "Get hjálpað með Microsoft office vörur",
+      "connection": null
+    },
+    {
+      "id": "2",
+      "moderator": "Valgerður",
+      "name": "Vefhjálp",
+      "description": "Get hjálpað með vef tengd atriði",
+      "connection": null
+    },
+    {
+      "id": "3",
+      "moderator": "Valgerður",
+      "name": "Almenn tölvuhjálp",
+      "description": "Almenn tölvuhjálp með windows, forrit eða annað sem komið getur upp.",
+      "connection": null
+    },
+    {
+      "id": "4",
+      "moderator": "Guðjón Hólm Sigurðssopn",
+      "name": "Uppsetning spjallrásar",
+      "description": "Almenn tölvuhjálp með windows, forrit eða annað sem komið getur upp.",
+      "connection": {
+        "apiKey": "46968744",
+        "sessionId": "2_MX40Njk2ODc0NH5-MTYwMzk3MDUxMDY0OX55ZnUvVjg0dEZ1L216WGFWYmRCM1hvMmh-fg",
+        "token": "T1==cGFydG5lcl9pZD00Njk2ODc0NCZzaWc9YTllODZhMzNlOTkyNzIyOTIzNjcyNGQ2MWU2ZjZhZTkyNzdiZWU2MDpzZXNzaW9uX2lkPTJfTVg0ME5qazJPRGMwTkg1LU1UWXdNemszTURVeE1EWTBPWDU1Wm5VdlZqZzBkRVoxTDIxNldHRldZbVJDTTFodk1taC1mZyZjcmVhdGVfdGltZT0xNjAzOTcwNzM3Jm5vbmNlPTAuNjE4Mzk5NzM5MDg5NTI2NCZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNjA0NTc5MTM1JmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9"
+      }
+    }
+  ]
 }
