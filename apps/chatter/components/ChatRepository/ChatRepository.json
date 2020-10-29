@@ -1,0 +1,9 @@
+{
+    "name":"Advania hjalparheimur",
+    "description":"Almenn hjálp sem advania býður uppá",
+    "rooms": [
+        {"sessionId":"1000000", "moderator":"Jón Jónsson", "name":"Office","description":"Get hjálpað með Microsoft office vörur"},
+        {"sessionId":"1000001", "moderator":"Valgerður",   "name":"Vefhjálp","description":"Get hjálpað með vef tengd atriði"},
+        {"sessionId":"1000002", "moderator":"Valgerður",   "name":"Almenn tölvuhjálp","description":"Almenn tölvuhjálp með windows, forrit eða annað sem komið getur upp."}
+    ]
+}
