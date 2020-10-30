@@ -1,5 +1,6 @@
 import  React, { useEffect, useState }  from "react";
 import { ChatRepository, ChatRoom } from '../ChatRepository';
+import styled from 'styled-components'
 
 interface ChatSessionProps {
     id:string
@@ -88,17 +89,54 @@ export const ChatSession = (props: ChatSessionProps) => {
 
 
     return (
-        <div>
+
+          <Container>
+            <Videos id="videos">
+              <Subscriber id="subscriber"></Subscriber>
+              <Publisher id="publisher"></Publisher>
+            </Videos>
+            <div>
             <h2>{room.name}</h2>
             <h4>{room.description}</h4>
             <dl>
-                <dt>id</dt><dd>{room.id}</dd>
                 <dt>moderator</dt><dd>{room.moderator}</dd>
-                <dt>connection</dt><dd>{JSON.stringify(room.connection)}</dd>
             </dl>
-        </div>
+          </div>
+          </Container>
     );
 }
 
+const Container = styled.div`
+  height: 100vh;
+
+`
+
+const Videos = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+`
+
+const Subscriber = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+`
+
+const Publisher = styled.div`
+  position: absolute;
+  width: 360px;
+  height: 240px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 100;
+  border: 3px solid white;
+  border-radius: 3px;
+`
 
 

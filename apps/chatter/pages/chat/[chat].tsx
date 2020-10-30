@@ -7,11 +7,12 @@ interface ChatSessionStartProps {
 }
 
 const ChatSessionStart = (props:ChatSessionStartProps)=> {
-    console.log(props);
+
     if (props === undefined || props === null || 
         props.query === undefined || props.query === null ) {
             return (<div>Missing props in ChatSessionStart</div>)
         }
+
     const valueList = Object.keys(props.query);
     if (valueList.length < 0) {
         return (<div>Missing query path</div>)
