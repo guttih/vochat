@@ -40,6 +40,25 @@ Create table rooms and add data
 docker cp rooms.sql postgres:/docker-entrypoint-initdb.d/rooms.sql && docker exec -u postgres postgres psql vochat postgres -f docker-entrypoint-initdb.d/rooms.sql
 ```
 
+#### Tools
+It's easy to use pgAdmin to view data in the database.
+
+1. Download [pgAdmin](https://www.pgadmin.org/download/) 
+2. Install pgAdmin
+3. Run pgAdmin
+3. Create a server connection
+  - **General** tab
+    - **Name**: vochat
+    - **Server group**:Servers
+  - **Connection** tab
+    - **Host name/address**: localhost
+    - **port**: 5432
+    - **username**: postgres
+    - **password**: postgres
+
+
+
+
 ## Start the apps
 
 ### Start the api
