@@ -76,6 +76,56 @@
           }
         }
       }
+    },
+    "voserver": {
+      "root": "apps/voserver",
+      "sourceRoot": "apps/voserver/src",
+      "projectType": "application",
+      "prefix": "voserver",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/voserver",
+            "main": "apps/voserver/src/main.ts",
+            "tsConfig": "apps/voserver/tsconfig.app.json",
+            "assets": ["apps/voserver/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/voserver/src/environments/environment.ts",
+                  "with": "apps/voserver/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "voserver:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/voserver/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/voserver/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

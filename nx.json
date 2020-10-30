@@ -32,6 +32,9 @@
     "chatter-e2e": {
       "tags": [],
       "implicitDependencies": ["chatter"]
+    },
+    "voserver": {
+      "tags": []
     }
   }
 }
