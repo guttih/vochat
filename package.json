@@ -34,6 +34,7 @@
     "@nestjs/typeorm": "^7.1.4",
     "@opentok/client": "^2.18.1",
     "document-register-element": "1.13.1",
+    "fs": "0.0.1-security",
     "next": "9.5.2",
     "pg": "^8.4.2",
     "react": "16.13.1",

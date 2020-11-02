@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Todo } from './todos/todo.entity';
 import { TodosModule } from './todos/todos.module';
+import { DiskFunctionsModule } from '@advania/disk-functions';
 
 @Module({
-  imports: [
+  imports: [DiskFunctionsModule,
     TodosModule, 
     TypeOrmModule.forRoot({
     type: 'postgres',
@@ -19,6 +20,6 @@ import { TodosModule } from './todos/todos.module';
     synchronize: true,
   })],
   controllers: [AppController, ],
-  providers: [AppService],
+  providers: [AppService, DiskFunctionsModule],
 })
 export class AppModule {}

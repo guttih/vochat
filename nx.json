@@ -35,6 +35,9 @@
     },
     "voserver": {
       "tags": []
+    },
+    "disk-functions": {
+      "tags": []
     }
   }
 }
