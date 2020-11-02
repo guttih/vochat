@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { DiskFunctionsModule } from '@advania/disk-functions';
-import { resolve } from 'url';
 
 @Injectable()
 export class AppService {
