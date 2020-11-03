@@ -17,5 +17,8 @@ export class AppService {
     const jsonObject = this.disk.GetJsonFileContent(file);
     return jsonObject;
   }
+  getStartingPage() {
+    return { message: 'Welcome to voserver!' };
+  }
 }
 

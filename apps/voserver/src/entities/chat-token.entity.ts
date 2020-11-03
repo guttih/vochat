@@ -1,3 +1,4 @@
+/*
 import { ChatSession } from './chat-session.entity' 
 import { Entity, Column, ManyToOne, PrimaryColumn } from 'typeorm';
 
@@ -19,4 +20,4 @@ export class ChatToken {
   @Column()
   expires: Date;
 
-}
+}*/

@@ -1,11 +1,12 @@
-import { Entity, Column, OneToMany, PrimaryColumn } from 'typeorm';
-import { ChatToken } from './chat-token.entity';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
+//import { ChatToken } from './chat-token.entity';
 
 
 // https://tokbox.com/developer/guides/create-session/node/
 
 @Entity()
 export class ChatSession {
+  
   @PrimaryColumn()
   id: string;
 
@@ -15,13 +16,13 @@ export class ChatSession {
   @Column()
   description: string;
   
-  @Column()
-  moderatorName: string;
+  /*@Column()
+  moderatorName: string;*/
   
   @Column()
   apiKey: string;
   
   //Sessions never expire but tokens to
-  @OneToMany(() => ChatToken, token => token.session)
-  tokens: ChatToken[];
+  /*@OneToMany(() => ChatToken, token => token.session)
+  tokens: ChatToken[];*/
 }

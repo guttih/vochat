@@ -1,3 +1,4 @@
+/*
 import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
@@ -13,3 +14,4 @@ export class Moderator {
   sessionIds: string;
   
 }
+*/
