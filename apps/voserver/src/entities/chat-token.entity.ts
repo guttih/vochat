@@ -1,4 +1,4 @@
-/*
+
 import { ChatSession } from './chat-session.entity' 
 import { Entity, Column, ManyToOne, PrimaryColumn } from 'typeorm';
 
@@ -9,7 +9,7 @@ export class ChatToken {
   @PrimaryColumn()
   id: string;
 
-  @ManyToOne(()=> ChatSession, session => session.tokens)
+  //@ManyToOne(()=> ChatSession, session => session.tokens)
   session: ChatSession;
 
   @Column({
@@ -20,4 +20,4 @@ export class ChatToken {
   @Column()
   expires: Date;
 
-}*/
+}

@@ -11,6 +11,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
 import { ChatSessionModule } from '../chat-session/chat-session.module';
+import { ChatServerModule } from '../chat-server/chat-server.module';
 //import { ModeratorModule } from '../moderator/moderator.module';
 
 @Module({
@@ -19,6 +20,7 @@ import { ChatSessionModule } from '../chat-session/chat-session.module';
     exclude: ['/api*'],
   }),
     DiskFunctionsModule,
+    ChatServerModule,
     ChatSessionModule,
     TypeOrmModule.forRoot({
       type: DatabaseSettings.type,
@@ -31,6 +33,7 @@ import { ChatSessionModule } from '../chat-session/chat-session.module';
       entities: [/*ChatToken,*/ ChatSession/*, Moderator*/],
     }),
     ChatSessionModule,
+    ChatServerModule,
   ],
   controllers: [AppController],
   providers: [AppService, DiskFunctionsModule],
