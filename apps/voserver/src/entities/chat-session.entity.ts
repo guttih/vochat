@@ -1,8 +1,9 @@
 import { Entity, Column, OneToMany, PrimaryColumn } from 'typeorm';
-import { ChatToken } from './ChatToken.entity';
+import { ChatToken } from './chat-token.entity';
 
 
 // https://tokbox.com/developer/guides/create-session/node/
+
 @Entity()
 export class ChatSession {
   @PrimaryColumn()

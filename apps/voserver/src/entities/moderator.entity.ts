@@ -1,18 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
-export class Moderators {
-  @PrimaryGeneratedColumn()
+export class Moderator {
+  @PrimaryColumn()
   id: string;
 
   @Column()
   name: string;
 
   
-  @Column({
-    nullable: true,
-    comment: 'Values with surrounding quotations and separated by comma.'
-  })
+  @Column()
   sessionIds: string;
   
 }

@@ -6,8 +6,10 @@ export class AppService {
 
   constructor(private readonly disk: DiskFunctionsModule){}
   getData(): { message: string } {
+    console.log('getData dude')
     return { message: 'Welcome to voserver!' };
   }
+
 
   async getConfig() {
     const file = './apps/voserver/test.json'

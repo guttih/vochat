@@ -1,6 +1,10 @@
 {
     "cSpell.words": [
+        "nrwl",
         "opentok",
-        "postgres"
+        "postgres",
+        "typeorm",
+        "vochat",
+        "voserver"
     ]
 }
