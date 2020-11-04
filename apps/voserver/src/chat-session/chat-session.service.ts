@@ -27,9 +27,10 @@ export class ChatSessionService {
     return await this.repo.find()
   }
 
-  public async create(chatSession: CreateChatSessionDto): Promise<ChatSession> {
-      console.log('service',chatSession)
-    return await this.repo.save(chatSession);
+  public async create(chatSessionDto: CreateChatSessionDto): Promise<ChatSession> {
+      const entity = chatSessionDto.ToEntity();
+      console.log('db creating ChatSession',entity)
+    return await this.repo.save(entity);
   }
 
   public async update(id: string, newValue: CreateChatSessionDto): Promise<ChatSession | null> {
@@ -38,7 +39,7 @@ export class ChatSessionService {
       // tslint:disable-next-line:no-console
       console.error("Todo doesn't exist");
     }
-    await this.repo.update(id, newValue);
+    await this.repo.update(id, CreateChatSessionDto.ValuesToEntity(newValue));
     return await this.repo.findOne(id);
   }
 

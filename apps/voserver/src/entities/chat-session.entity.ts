@@ -16,8 +16,11 @@ export class ChatSession {
   @Column()
   description: string;
   
-  /*@Column()
-  moderatorName: string;*/
+  @Column()
+  mediaMode:  string;
+  
+  @Column()
+  archiveMode: string;
   
   @Column()
   apiKey: string;
