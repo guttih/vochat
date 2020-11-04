@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { ChatToken } from '../entities/chat-token.entity';
 import { DeleteResult, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateChatTokenDto } from '../models/chat-token.models';
 
 
 @Injectable()
@@ -16,8 +15,8 @@ export class ChatTokenService {
     console.log("ChatTokenService constructor running");
   }
 
-  async getItem(mId: string):Promise<ChatToken> {
-    const item = await this.repo.findOneOrFail(mId);
+  async getItem(id: number):Promise<ChatToken> {
+    const item = await this.repo.findOneOrFail(id);
     console.log(item);
     return item;
   }
@@ -33,15 +32,15 @@ export class ChatTokenService {
     return await this.repo.save(chatToken);
   }
 
-  public async update(token: string, newValue: ChatToken): Promise<ChatToken | null> {
-    const item = await this.repo.findOneOrFail(token);
-    if (!item.token) {
+  public async update(id: number, newValue: ChatToken): Promise<ChatToken | null> {
+    const item = await this.repo.findOneOrFail(id);
+    if (!item) {
       // tslint:disable-next-line:no-console
-      console.error("Todo doesn't exist");
+      console.error(`Token with id ${id} doesn't exist`);
     }
     
-    await this.repo.update(token, newValue);
-    return await this.repo.findOne(token);
+    await this.repo.update(id, newValue);
+    return await this.repo.findOne(id);
   }
 
   public async delete(id: string): Promise<DeleteResult> {

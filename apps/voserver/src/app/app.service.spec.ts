@@ -14,8 +14,8 @@ describe('AppService', () => {
   });
 
   describe('getData', () => {
-    it('should return "Welcome to voserver!"', () => {
-      expect(service.getData()).toEqual({ message: 'Welcome to voserver!' });
+    it('should return "Welcome to voserver!  See /swagger for available routes."', () => {
+      expect(service.getData()).toEqual({ message: 'Welcome to voserver!  See /swagger for available routes.' });
     });
   });
 });

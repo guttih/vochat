@@ -4,8 +4,7 @@ import { ChatToken } from '../entities/chat-token.entity';
 
 
 export class CreateServerChatTokenDto {
-    
-  
+     
   @ApiProperty({ type: String, description: 'Id of the session this token is assigned to.', example:'sessionIdNumber1'})
   @IsString({ message: 'Value of session should be a string' })
   @MinLength(1, { message: 'Session is missing.' })
@@ -39,9 +38,13 @@ export class CreateServerChatTokenDto {
 }
 
 export class CreateChatTokenDto extends CreateServerChatTokenDto {
-    
-  
-  @ApiProperty({ type: String, description: 'ChatToken identifier' })
+
+  @ApiProperty({ type: Number, description: 'ChatToken id', example:1})
+  @IsNumber()
+  @Min(1, { message: "Smallest value form token id, is 1." })
+  id: number;
+
+  @ApiProperty({ type: String, description: 'ChatToken text' })
   @IsString()
   @MinLength(10, { message: "Invalid token, it's to short" })
   token: string;

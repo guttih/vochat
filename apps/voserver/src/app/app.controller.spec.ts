@@ -14,10 +14,10 @@ describe('AppController', () => {
   });
 
   describe('getData', () => {
-    it('should return "Welcome to voserver!"', () => {
+    it('should return "Welcome to voserver!  See /swagger for available routes."', () => {
       const appController = app.get<AppController>(AppController);
       expect(appController.getData()).toEqual({
-        message: 'Welcome to voserver!',
+        message: 'Welcome to voserver!  See /swagger for available routes.',
       });
     });
   });

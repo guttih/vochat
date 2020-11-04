@@ -7,7 +7,7 @@ export class AppService {
   constructor(private readonly disk: DiskFunctionsModule){}
   getData(): { message: string } {
     console.log('getData dude')
-    return { message: 'Welcome to voserver!' };
+    return { message: 'Welcome to voserver!  See /swagger for available routes.' };
   }
 
 
@@ -18,7 +18,7 @@ export class AppService {
     return jsonObject;
   }
   getStartingPage() {
-    return { message: 'Welcome to voserver!' };
+    return { message: 'Welcome to voserver!  See /swagger for available routes.' };
   }
 }
 

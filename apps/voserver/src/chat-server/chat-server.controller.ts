@@ -1,6 +1,8 @@
 import { Controller,  Get, Param, Post, ValidationPipe,  } from '@nestjs/common';
 import { Body } from '@nestjs/common/decorators/http/route-params.decorator';
 import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiResponse } from '@nestjs/swagger';
+import { ChatSession } from '../entities/chat-session.entity';
+import { ChatToken } from '../entities/chat-token.entity';
 import { CreateServerChatSessionDto } from '../models/chat-session.models';
 import { CreateServerChatTokenDto } from '../models/chat-token.models';
 import { ChatServerService } from './chat-server.service';
@@ -15,8 +17,7 @@ export class ChatServerController {
     }
     @Post('create-token')
     @ApiBody({ type: CreateServerChatTokenDto })
-    @ApiCreatedResponse({type: String})
-    //@ApiCreatedResponse({ description: 'Token created'})
+    @ApiCreatedResponse({type:ChatToken, description: 'Token created both in db and on Vochat server'})
     //CreateServerChatTokenDto
     createToken( @Body(ValidationPipe) userValidatedValues:CreateServerChatTokenDto ) {
         console.log('chat-server controller got values',userValidatedValues);
@@ -25,7 +26,7 @@ export class ChatServerController {
 
     @Post('create-session')
     @ApiBody({ type: CreateServerChatSessionDto })
-    @ApiCreatedResponse({ description: 'session id' })
+    @ApiCreatedResponse({type: ChatSession,  description: 'session id' })
     Create(@Body(ValidationPipe) userValidatedValues: CreateServerChatSessionDto) {
         return this.chatServerService.createSession(userValidatedValues);
     }

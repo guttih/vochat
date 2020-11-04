@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, ValidationPipe } from '@nestjs/common';
-import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiOkResponse, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ChatToken } from '../entities/chat-token.entity';
 import { CreateChatTokenDto } from '../models/chat-token.models';
 import { ChatTokenService } from './chat-token.service';
 
@@ -9,32 +10,32 @@ export class ChatTokenController {
 
     @Get()
     @ApiOperation({description:'Lists all tokens saved in the database'})
-    @ApiCreatedResponse({type:[CreateChatTokenDto]})
+    @ApiOkResponse({type:[ChatToken]})
     listAll() {
         return this.chatTokenService.findAll()
     }
-
+    
     @Get(':id')
     @ApiOperation({description:'Gets a specific token from the database.'})
-    @ApiCreatedResponse({type: CreateChatTokenDto})
-    getItem( @Param('id') id:string ) {
+    @ApiOkResponse({type: ChatToken})
+    getItem(@Param('id') id:number ) {
         return this.chatTokenService.getItem(id);
     }
 
-    /* // ChatServerService should create tokens
+    // todo: ChatServerController should create Tokens not ChatSessionController
     @Post()
     @ApiBody({type: CreateChatTokenDto})
-    @ApiCreatedResponse({ description: 'Registers a chat-token'})
-    Create( @Body(ValidationPipe) Credentials: CreateChatTokenDto ) {
-        return this.chatTokenService.create(Credentials.ToEntity());
+    @ApiOkResponse({ type:ChatToken, description: 'Registers a chat-token'})
+    Create( @Body(ValidationPipe) userValidatedValues: CreateChatTokenDto ) {
+        return this.chatTokenService.create(CreateChatTokenDto.ValuesToEntity(userValidatedValues));
     }
-    */
+    
     
     @Put(':id')
     @ApiOperation({description:'Modifies values of a specific token.  Warning, modifying the token or the sessionId, could result in a stored token for a session which does not exist on the Chat server.'})
     @ApiBody({type: CreateChatTokenDto})
-    @ApiResponse({type: CreateChatTokenDto})
-    updateItem( @Param('id') id:string, @Body(ValidationPipe) userValidatedValues: CreateChatTokenDto ) {
+    @ApiOkResponse({type: ChatToken, description: 'modified values as they are stored in the database.'})
+    updateItem( @Param('id') id:number, @Body(ValidationPipe) userValidatedValues: CreateChatTokenDto ) {
 
         return this.chatTokenService.update(id, CreateChatTokenDto.ValuesToEntity(userValidatedValues));
     }
