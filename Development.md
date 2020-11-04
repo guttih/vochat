@@ -73,15 +73,11 @@ There are two apps.  The client (web app/frontend) is called **chatter** and the
 server (api/backend) is called **voserver**
 
 ### Starting the server
-docker must be running for the api to work
-```
- `yarn start voserver` or `npm run start voserver`.
-```
+docker must be running for the api to work.
+Commands `yarn start voserver` or `npm run start voserver`.
+
 You can view all server routes from here `http://localhost:3333/swagger`.
 
 ### Starting the client
 The **server** must be running for the web app to work.
-```
-`yarn start chatter` or `npm run start chatter`.
-
-```
+Command: `yarn start chatter` or `npm run start chatter`.
