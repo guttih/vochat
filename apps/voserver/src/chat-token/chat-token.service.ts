@@ -12,10 +12,14 @@ export class ChatTokenService {
 
   constructor(
     @InjectRepository(ChatToken) private readonly repo: Repository<ChatToken>
-  ) {}
+  ) {
+    console.log("ChatTokenService constructor running");
+  }
 
   async getItem(mId: string):Promise<ChatToken> {
-    return await this.repo.findOneOrFail(mId);
+    const item = await this.repo.findOneOrFail(mId);
+    console.log(item);
+    return item;
   }
 
   public async findAll(): Promise<ChatToken[]> {

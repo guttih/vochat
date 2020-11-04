@@ -7,6 +7,6 @@ import { ChatSessionService } from './chat-session.service';
 @Module({
   imports:[TypeOrmModule.forFeature([ChatSession])],
   controllers: [ChatSessionController],
-  providers: [ChatSessionService]
+  providers: [ChatSessionService],
 })
 export class ChatSessionModule {}

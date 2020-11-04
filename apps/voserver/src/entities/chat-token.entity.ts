@@ -1,15 +1,16 @@
 
-import { Entity, Column, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Entity, Column, ManyToOne, PrimaryColumn, JoinColumn } from 'typeorm';
 import { ChatSession } from './chat-session.entity';
 
 //see: comment: 'https://tokbox.com/developer/guides/basics/#token'
 
-@Entity()
+@Entity('tokens')
 export class ChatToken  {
   @PrimaryColumn()
   token: string;
 
-  @ManyToOne(()=> ChatSession, session => session.tokens)
+  //@ManyToOne(()=> ChatSession, session => session.tokens)
+  @Column()
   sessionId:string;
 
   @Column()

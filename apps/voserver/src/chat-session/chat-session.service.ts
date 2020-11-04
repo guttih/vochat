@@ -13,10 +13,14 @@ export class ChatSessionService {
 
   constructor(
     @InjectRepository(ChatSession) private readonly repo: Repository<ChatSession>
-  ) {}
+  ) {
+    console.log("ChatSessionService constructor running");
+  }
 
-  async getItem(mId: string):Promise<ChatSession> {
-    return await this.repo.findOneOrFail(mId);
+  public async getItem(mId: string):Promise<ChatSession> {
+    const item = await this.repo.findOneOrFail(mId);
+    console.log(item)
+    return item;
   }
 
   public async findAll(): Promise<ChatSession[]> {

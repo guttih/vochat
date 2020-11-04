@@ -10,7 +10,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
 import { ChatSessionModule } from '../chat-session/chat-session.module';
-//import { ChatServerModule } from '../chat-server/chat-server.module';
+import { ChatServerModule } from '../chat-server/chat-server.module';
 import { ChatTokenModule } from '../chat-token/chat-token.module';
 import { ChatToken } from '../entities/chat-token.entity';
 
@@ -19,23 +19,20 @@ import { ChatToken } from '../entities/chat-token.entity';
     rootPath: join(__dirname, '.', 'assets'),
     exclude: ['/api*'],
   }),
-    DiskFunctionsModule,
-    //ChatServerModule,
-    ChatSessionModule,
-    ChatTokenModule,
-    TypeOrmModule.forRoot({
-      type: DatabaseSettings.type,
-      host: DatabaseSettings.host,
-      port: DatabaseSettings.port,
-      username: DatabaseSettings.username,
-      password: DatabaseSettings.password,
-      database: DatabaseSettings.database,
-      synchronize: DatabaseSettings.synchronize,
-      entities: [ChatSession, ChatToken],
-    }),
-    ChatSessionModule,
-    ChatTokenModule
-    //ChatServerModule,
+  DiskFunctionsModule,
+  ChatSessionModule,
+  ChatTokenModule,
+  ChatServerModule,
+  TypeOrmModule.forRoot({
+    type: DatabaseSettings.type,
+    host: DatabaseSettings.host,
+    port: DatabaseSettings.port,
+    username: DatabaseSettings.username,
+    password: DatabaseSettings.password,
+    database: DatabaseSettings.database,
+    synchronize: DatabaseSettings.synchronize,
+    entities: [ChatSession, ChatToken],
+  }),
   ],
   controllers: [AppController],
   providers: [AppService, DiskFunctionsModule],
