@@ -7,6 +7,6 @@ import { ChatTokenService } from './chat-token.service';
 @Module({
   imports:[TypeOrmModule.forFeature([ChatToken])],
   controllers: [ChatTokenController],
-  providers: [ChatTokenService]
+  providers: [ChatTokenService ]
 })
 export class ChatTokenModule {}

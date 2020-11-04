@@ -1,40 +1,43 @@
 import { Injectable } from '@nestjs/common';
-import { ChatSession } from '../entities/chat-session.entity';
+import { ChatToken } from '../entities/chat-token.entity';
 import { DeleteResult, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateChatSessionDto } from '../models/chat-session.models';
+import { CreateChatTokenDto } from '../models/chat-token.models';
 
 
 @Injectable()
-export class ChatSessionService {
+export class ChatTokenService {
   
   
 
   constructor(
-    @InjectRepository(ChatSession) private readonly repo: Repository<ChatSession>
+    @InjectRepository(ChatToken) private readonly repo: Repository<ChatToken>
   ) {}
 
-  async getItem(mId: string):Promise<ChatSession> {
+  async getItem(mId: string):Promise<ChatToken> {
     return await this.repo.findOneOrFail(mId);
   }
 
-  public async findAll(): Promise<ChatSession[]> {
+  public async findAll(): Promise<ChatToken[]> {
     return await this.repo.find()
   }
 
-  public async create(chatSession: CreateChatSessionDto): Promise<ChatSession> {
-      console.log('service',chatSession)
-    return await this.repo.save(chatSession);
+  public async create(chatToken: ChatToken): Promise<ChatToken> {
+      console.log('service',chatToken)
+
+      
+    return await this.repo.save(chatToken);
   }
 
-  public async update(id: string, newValue: CreateChatSessionDto): Promise<ChatSession | null> {
-    const item = await this.repo.findOneOrFail(id);
-    if (!item.id) {
+  public async update(token: string, newValue: ChatToken): Promise<ChatToken | null> {
+    const item = await this.repo.findOneOrFail(token);
+    if (!item.token) {
       // tslint:disable-next-line:no-console
       console.error("Todo doesn't exist");
     }
-    await this.repo.update(id, newValue);
-    return await this.repo.findOne(id);
+    
+    await this.repo.update(token, newValue);
+    return await this.repo.findOne(token);
   }
 
   public async delete(id: string): Promise<DeleteResult> {

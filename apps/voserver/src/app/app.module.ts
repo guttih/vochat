@@ -5,14 +5,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DiskFunctionsModule } from '@advania/disk-functions';
 import { ChatSession } from '../entities/chat-session.entity';
 //import { ChatToken } from '../entities/chat-token.entity';
-//import { Moderator } from '../entities/moderator.entity';
 import { DatabaseSettings } from '../ormconfig';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
 import { ChatSessionModule } from '../chat-session/chat-session.module';
-import { ChatServerModule } from '../chat-server/chat-server.module';
-//import { ModeratorModule } from '../moderator/moderator.module';
+//import { ChatServerModule } from '../chat-server/chat-server.module';
+import { ChatTokenModule } from '../chat-token/chat-token.module';
+import { ChatToken } from '../entities/chat-token.entity';
 
 @Module({
   imports: [ServeStaticModule.forRoot({
@@ -20,8 +20,9 @@ import { ChatServerModule } from '../chat-server/chat-server.module';
     exclude: ['/api*'],
   }),
     DiskFunctionsModule,
-    ChatServerModule,
+    //ChatServerModule,
     ChatSessionModule,
+    ChatTokenModule,
     TypeOrmModule.forRoot({
       type: DatabaseSettings.type,
       host: DatabaseSettings.host,
@@ -30,10 +31,11 @@ import { ChatServerModule } from '../chat-server/chat-server.module';
       password: DatabaseSettings.password,
       database: DatabaseSettings.database,
       synchronize: DatabaseSettings.synchronize,
-      entities: [/*ChatToken,*/ ChatSession/*, Moderator*/],
+      entities: [ChatSession, ChatToken],
     }),
     ChatSessionModule,
-    ChatServerModule,
+    ChatTokenModule
+    //ChatServerModule,
   ],
   controllers: [AppController],
   providers: [AppService, DiskFunctionsModule],

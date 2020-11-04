@@ -1,43 +1,43 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, ValidationPipe } from '@nestjs/common';
 import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiResponse } from '@nestjs/swagger';
-import { CreateChatSessionDto } from '../models/chat-session.models';
-import { ChatSessionService } from './chat-session.service';
+import { CreateChatTokenDto } from '../models/chat-token.models';
+import { ChatTokenService } from './chat-token.service';
 
-@Controller('session')
-export class ChatSessionController {
-    constructor(private readonly chatSessionService: ChatSessionService){}
+@Controller('token')
+export class ChatTokenController {
+    constructor(private readonly chatTokenService: ChatTokenService){}
 
     @Get()
     listAll() {
-        return this.chatSessionService.findAll()
+        return this.chatTokenService.findAll()
     }
 
     @Get(':id')
-    @ApiCreatedResponse({type: CreateChatSessionDto})
+    @ApiCreatedResponse({type: CreateChatTokenDto})
     getItem( @Param('id') mId:string ) {
-        return this.chatSessionService.getItem(mId);
+        return this.chatTokenService.getItem(mId);
     }
 
-
+    /*
     @Post()
-    @ApiBody({type: CreateChatSessionDto})
-    @ApiCreatedResponse({ description: 'Registers a chat-session'})
-    Create( @Body(ValidationPipe) Credentials: CreateChatSessionDto ) {
-        return this.chatSessionService.create(Credentials);
+    @ApiBody({type: CreateChatTokenDto})
+    @ApiCreatedResponse({ description: 'Registers a chat-token'})
+    Create( @Body(ValidationPipe) Credentials: CreateChatTokenDto ) {
+        return this.chatTokenService.create(Credentials);
     }
 
     
     @Put(':id')
-    @ApiBody({type: CreateChatSessionDto})
-    @ApiResponse({type: CreateChatSessionDto})
-    updateItem( @Param('id') mid:string, @Body(ValidationPipe) Credentials: CreateChatSessionDto ) {
-        return this.chatSessionService.update(mid, Credentials);
-    }
+    @ApiBody({type: CreateChatTokenDto})
+    @ApiResponse({type: CreateChatTokenDto})
+    updateItem( @Param('id') mid:string, @Body(ValidationPipe) Credentials: CreateChatTokenDto ) {
+        return this.chatTokenService.update(mid, Credentials);
+    }*/
     
     @Delete(':id')
     @ApiOkResponse()
     deleteItem( @Param('id') mid:string) {
-        return this.chatSessionService.delete(mid);
+        return this.chatTokenService.delete(mid);
     }
 
 }

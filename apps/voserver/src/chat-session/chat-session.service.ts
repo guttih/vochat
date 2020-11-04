@@ -3,6 +3,7 @@ import { ChatSession } from '../entities/chat-session.entity';
 import { DeleteResult, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateChatSessionDto } from '../models/chat-session.models';
+import { ChatToken } from '../entities/chat-token.entity';
 
 
 @Injectable()
@@ -38,6 +39,13 @@ export class ChatSessionService {
   }
 
   public async delete(id: string): Promise<DeleteResult> {
+    await this.repo
+    .createQueryBuilder()
+    .delete()
+    .from(ChatToken)
+    .where("sessionId = :id", { id: id })
+    .execute();
+    
     return await this.repo.delete(id);
   }
 }
