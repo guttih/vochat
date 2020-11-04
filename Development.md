@@ -77,6 +77,7 @@ docker must be running for the api to work
 ```
  `yarn start voserver` or `npm run start voserver`.
 ```
+You can view all server routes from here `http://localhost:3333/swagger`.
 
 ### Starting the client
 The **server** must be running for the web app to work.
