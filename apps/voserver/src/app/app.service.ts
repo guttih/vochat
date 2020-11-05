@@ -18,7 +18,7 @@ export class AppService {
     return jsonObject;
   }
   getStartingPage() {
-    return { message: 'Welcome to voserver!  See /swagger for available routes.' };
+    return { message: 'Welcome to voserver!  See /swagger for available routes. and /graphql for the GraphQL playground.' };
   }
 }
 

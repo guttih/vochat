@@ -13,28 +13,35 @@ import { ChatSessionModule } from '../chat-session/chat-session.module';
 import { ChatServerModule } from '../chat-server/chat-server.module';
 import { ChatTokenModule } from '../chat-token/chat-token.module';
 import { ChatToken } from '../entities/chat-token.entity';
+import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
-  imports: [ServeStaticModule.forRoot({
-    rootPath: join(__dirname, '.', 'assets'),
-    exclude: ['/api*'],
-  }),
-  DiskFunctionsModule,
-  ChatSessionModule,
-  ChatTokenModule,
-  ChatServerModule,
-  TypeOrmModule.forRoot({
-    type: DatabaseSettings.type,
-    host: DatabaseSettings.host,
-    port: DatabaseSettings.port,
-    username: DatabaseSettings.username,
-    password: DatabaseSettings.password,
-    database: DatabaseSettings.database,
-    synchronize: DatabaseSettings.synchronize,
-    entities: [ChatSession, ChatToken],
-  }),
-  ],
-  controllers: [AppController],
-  providers: [AppService, DiskFunctionsModule],
+    imports: [
+        GraphQLModule.forRoot({
+            debug: true,
+            playground: true,
+            autoSchemaFile: 'schema.gql',
+        }),
+        ServeStaticModule.forRoot({
+            rootPath: join(__dirname, '.', 'assets'),
+            exclude: ['/api*','/graphql*'],
+        }),
+        DiskFunctionsModule,
+        ChatSessionModule,
+        ChatTokenModule,
+        ChatServerModule,
+        TypeOrmModule.forRoot({
+            type: DatabaseSettings.type,
+            host: DatabaseSettings.host,
+            port: DatabaseSettings.port,
+            username: DatabaseSettings.username,
+            password: DatabaseSettings.password,
+            database: DatabaseSettings.database,
+            synchronize: DatabaseSettings.synchronize,
+            entities: [ChatSession, ChatToken],
+        }),
+    ],
+    controllers: [AppController],
+    providers: [AppService, DiskFunctionsModule],
 })
 export class AppModule {}

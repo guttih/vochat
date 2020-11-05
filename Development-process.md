@@ -45,7 +45,7 @@ And now my favorite part, the backend which is a nestjs application.
 #### Adding a controller, module and a service
 Now you can start adding stuff to you voserver application. This is how you 
 would add a controller, module and a service named ChatToken- to the voserver app.
-```
+```shell
 nx generate @nrwl/nest:module --name=ChatToken --project=voserver
 nx generate @nrwl/nest:controller --name=ChatToken --project=voserver 
 nx generate @nrwl/nest:service --name=ChatToken --project=voserver
@@ -54,7 +54,7 @@ nx generate @nrwl/nest:service --name=ChatToken --project=voserver
 #### Adding a Library to your workspace
 This is how you would add a workspace library called **disk-functions** usable 
 by all apps in the workspace.
-```
+```shell
 nx generate @nrwl/nest:library --name=disk-functions --importPath=@advania/disk-functions
 ```
 And if you want  to add a service to the library you would do it just like it was done for a app, just change the name of the project from voserver to disk-functions like so: `nx generate @nrwl/nest:service --name=io --project=disk-functions`

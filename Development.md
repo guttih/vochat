@@ -15,14 +15,14 @@ How to create a Postgres (PostgreSQL) docker and add data
 Create postgres docker
 
 Creating and running a docker named, postgres with password postgres
-```
+```shell
 docker stop postgres
 docker rm postgres
 docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres --name postgres postgres
 ```
 
 or one liner in linux (git bash)
-```
+```shell
 docker stop postgres && docker rm postgres && docker run -p 5432:5432 -e POSTGRES_PASSWORD=postgres --name postgres postgres
 ```
 
@@ -31,7 +31,7 @@ docker stop postgres && docker rm postgres && docker run -p 5432:5432 -e POSTGRE
 press ctr+c to stop the command above.  The docker should be running even tho, you break here.
 then give the command below to create the database vochat.
 #### Create the database
-```
+```shell
 docker exec -u postgres postgres createdb vochat
 ```
 Now you can run the backend (**voserver**) with the command `yarn start voserver` or `npm run start voserver`.
@@ -62,17 +62,17 @@ Go to the root of the project and do the following.
 I need to do these commands in git-bash for it to work
 
 Goto data folder
-```
+```shell
 cd ./data/vochat
 ```
 
 Create table moderators and add data
-```
+```shell
 docker cp moderators.sql postgres:/docker-entrypoint-initdb.d/moderators.sql && docker exec -u postgres postgres psql vochat postgres -f docker-entrypoint-initdb.d/moderators.sql
 ```
 
 Create table rooms and add data
-```
+```shell
 docker cp rooms.sql postgres:/docker-entrypoint-initdb.d/rooms.sql && docker exec -u postgres postgres psql vochat postgres -f docker-entrypoint-initdb.d/rooms.sql
 ```
 
@@ -100,5 +100,5 @@ Command: `yarn start chatter` or `npm run start chatter`.
 [Node.js]:https://nodejs.org
 [Docker]:https://www.docker.com/get-started
 [postgres]:https://www.postgresql.org/
-   [Development-process.md]:Development-process.md
-   [Development-GraphQL.md]:Development-GraphQL.md
+[Development-process.md]:Development-process.md
+[Development-GraphQL.md]:Development-GraphQL.md
