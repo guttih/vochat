@@ -90,8 +90,15 @@ You can view all server routes from here `http://localhost:3333/swagger`.
 The **server** must be running for the web app to work.
 Command: `yarn start chatter` or `npm run start chatter`.
 
+## Reference
+- Other Development documents in this repository
+   - [Development-process.md]
+   - [Development-GraphQL.md]
+
 
 
 [Node.js]:https://nodejs.org
 [Docker]:https://www.docker.com/get-started
 [postgres]:https://www.postgresql.org/
+   [Development-process.md]:Development-process.md
+   [Development-GraphQL.md]:Development-GraphQL.md
