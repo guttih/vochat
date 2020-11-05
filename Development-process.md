@@ -74,7 +74,7 @@ by removing it from the files jest.config.js and tsconfig.base.json.
 To be sure just text search all files in project for the name of your library.
 
 ## Adding GraphQL
-Open [Development-GraphQL.md] to find out how to add add a GraphQL API to a 
+Open [Development-GraphQL.md] to find out how to add add a [GraphQL] API to a 
 NX workspace and making it consume and access data from a app in the workspace.
 
 
@@ -106,6 +106,6 @@ NX workspace and making it consume and access data from a app in the workspace.
 [Nest and TypeORM]:https://docs.nestjs.com/techniques/database
 [gitbook typeorm]:https://orkhan.gitbook.io/typeorm/docs/find-options
 [TypeORM]:https://typeorm.io/#/
-[GraphQL API with NestJS]:https://blog.logrocket.com/how-to-build-a-graphql-api-with-nestjs/
+[GraphQL]:https://graphql.org/
 [Development-GraphQL.md]:Development-GraphQL.md
 [Development.md]:Development.md
