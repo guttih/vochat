@@ -1,4 +1,12 @@
 # Development
+This document describes how to start up and develop apps in this project.
+See [Development-process.md](Development-process.md) to get notes on how I went about creating this project.
+
+## Requirements
+You will need to install the following on your computer in order to make this program run
+  1. [Node.js] - to be able to run the apps and use the NPM installer.
+  2. [Docker] - To be able to setup and run a Docker [postgres] container which will hold the application data.
+
 
 ## Docker for postgres database
 How to create a Postgres (PostgreSQL) docker and add data
@@ -81,3 +89,9 @@ You can view all server routes from here `http://localhost:3333/swagger`.
 ### Starting the client
 The **server** must be running for the web app to work.
 Command: `yarn start chatter` or `npm run start chatter`.
+
+
+
+[Node.js]:https://nodejs.org
+[Docker]:https://www.docker.com/get-started
+[postgres]:https://www.postgresql.org/

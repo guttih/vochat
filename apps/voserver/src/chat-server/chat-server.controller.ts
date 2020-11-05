@@ -1,6 +1,6 @@
-import { Controller,  Get, Param, Post, ValidationPipe,  } from '@nestjs/common';
+import { Controller,  Get, Post, ValidationPipe,  } from '@nestjs/common';
 import { Body } from '@nestjs/common/decorators/http/route-params.decorator';
-import { ApiBody, ApiCreatedResponse, ApiOkResponse, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiCreatedResponse } from '@nestjs/swagger';
 import { ChatSession } from '../entities/chat-session.entity';
 import { ChatToken } from '../entities/chat-token.entity';
 import { CreateServerChatSessionDto } from '../models/chat-session.models';

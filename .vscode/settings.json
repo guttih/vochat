@@ -1,9 +1,13 @@
 {
     "cSpell.words": [
         "Unpublish",
+        "createdb",
+        "entrypoint",
+        "initdb",
         "nrwl",
         "opentok",
         "postgres",
+        "psql",
         "typeorm",
         "vochat",
         "voserver"
