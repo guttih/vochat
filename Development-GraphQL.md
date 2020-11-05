@@ -107,9 +107,9 @@ import { GraphQLModule } from '@nestjs/graphql';
 Now when you run the app `npm run start voserver` you should be able to access
 the GraphQL playground from the following url: http://localhost:3333/graphql
 
-You can view the code changes (*.ts files) committed to the repo in this Commit [todo: insert Commit] 
-to be able to view, all changes needed to get the GraphQL working for the 
-ChatTokenResolver in this project.
+You can view the code changes (*.ts files) committed to the repo in this Commit 
+[973b795] to be able to view, all changes needed to get the GraphQL working for
+the ChatTokenResolver in this project.
 
 This project is now a little overkill for the consumer.  It has both a swagger
 and a graphQL web interface.  But this was done for informational purposes. 
@@ -136,3 +136,4 @@ Live long an prosper! :eyes:
 [ChatTokenModule]:apps/voserver/src/chat-token/chat-token.module.ts
 [yarn]:https://yarnpkg.com/
 [AppModule]:apps/voserver/src/app/app.module.ts
+[973b795]:https://github.com/guttih/vochat/commit/973b7958765b1954b5af4ba32d30d55c8851280f
