@@ -1,3 +1,4 @@
+import { DiskFunctionsModule } from '@advania/disk-functions';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { AppController } from './app.controller';
@@ -9,15 +10,15 @@ describe('AppController', () => {
   beforeAll(async () => {
     app = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService],
+      providers: [AppService, DiskFunctionsModule],
     }).compile();
   });
 
   describe('getData', () => {
-    it('should return "Welcome to voserver!  See /swagger for available routes."', () => {
+    it('should return "Welcome to voserver!  See /swagger for available routes. and /graphql for the GraphQL playground."', () => {
       const appController = app.get<AppController>(AppController);
       expect(appController.getData()).toEqual({
-        message: 'Welcome to voserver!  See /swagger for available routes.',
+        message: 'Welcome to voserver!  See /swagger for available routes. and /graphql for the GraphQL playground.',
       });
     });
   });

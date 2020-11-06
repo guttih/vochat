@@ -7,7 +7,7 @@ export class AppService {
   constructor(private readonly disk: DiskFunctionsModule){}
   getData(): { message: string } {
     console.log('getData dude')
-    return { message: 'Welcome to voserver!  See /swagger for available routes.' };
+    return { message: 'Welcome to voserver!  See /swagger for available routes. and /graphql for the GraphQL playground.' };
   }
 
 
