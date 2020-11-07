@@ -31,7 +31,14 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3333;
   await app.listen(port, () => {
-    Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
+    const str = `
+    Server listening at these locations:
+     - http://localhost:${port}/${globalPrefix}
+     - http://localhost:${port}/swagger
+     - http://localhost:${port}/graphql
+    `;
+
+    Logger.log(str);
   });
 }
 
