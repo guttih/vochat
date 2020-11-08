@@ -1,4 +1,7 @@
 import Repository from './ChatRepository.json'
+import { ChatToken } from 'apps/voserver/src/entities/chat-token.entity';
+import { ChatSession } from 'apps/voserver/src/entities/chat-session.entity';
+import { Query } from '@nestjs/common';
 
 export type ChatRoomConnection = {
     apiKey: string
@@ -29,8 +32,76 @@ export class ChatRepository {
             rooms: Repository.rooms,
             name: Repository.name,
             description:Repository.description
-        }
+        } 
     }
+
+    fetchRooms(){
+        console.log("fetchRooms: TODO: let's query the data using servers graphql")
+        const response = await this.fetchQuery("{SessionList { id sessionId name role expires } }");
+
+        /*/const response = await fetch("https://jsonplaceholder.typicode.com/posts",{ headers: {'Content-Type': 'application/json'}});
+        /const body = {"query": "{token(id:2){id sessionId name role expires token}}"};*/
+        
+        /*const query = {query: "{tokenList { id sessionId name role expires } }"};
+        const response = await fetch(   "http://localhost:3333/graphql",
+                                        { 
+                                            method: 'POST',
+                                            headers: {'Content-Type': 'application/json'},
+                                            body:JSON.stringify(query)
+                                        });
+        
+        */
+        console.log(await response.json());
+    }
+
+    async fetchQuery(queryText: string){
+
+        const strQuery = JSON.stringify({query: queryText});
+        const response = await fetch(   "http://localhost:3333/graphql",
+                                        { 
+                                            method: 'POST',
+                                            headers: {'Content-Type': 'application/json'},
+                                            body:strQuery
+                                        });
+        return response;
+
+    }
+
+    async fetchTokens(){
+        console.log("fetchTokens: Let's query the data using servers graphql")
+        const response = await this.fetchQuery("{tokenList { id sessionId name role expires } }");
+
+        /*/const response = await fetch("https://jsonplaceholder.typicode.com/posts",{ headers: {'Content-Type': 'application/json'}});
+        /const body = {"query": "{token(id:2){id sessionId name role expires token}}"};*/
+        
+        /*const query = {query: "{tokenList { id sessionId name role expires } }"};
+        const response = await fetch(   "http://localhost:3333/graphql",
+                                        { 
+                                            method: 'POST',
+                                            headers: {'Content-Type': 'application/json'},
+                                            body:JSON.stringify(query)
+                                        });
+        
+        */
+        console.log(await response.json());
+        
+    
+    return response;
+
+
+         /*const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: 'React POST Request Example' })
+    };
+    fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
+        .then(response => response.json())
+        .then(data => this.setState({ postId: data.id }));*/
+
+
+    }
+
+
 
     // returns -1 if nothing is found
     indexOfRoomById = (roomId:string):number => {
