@@ -2,6 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ChatSession {
+  id: String!
+  name: String!
+  description: String!
+  mediaMode: String!
+  archiveMode: String!
+  active: Boolean!
+  apiKey: String!
+}
+
 type ChatToken {
   id: Float!
   token: String!
@@ -17,6 +27,8 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Query {
+  sessions: [ChatSession!]!
+  sessionsByActive(active: Boolean!): [ChatSession!]!
   token(id: Int!): ChatToken!
   tokenList: [ChatToken!]!
 }

@@ -1,4 +1,3 @@
-import Repository from './ChatRepository.json'
 import { ChatToken } from 'apps/voserver/src/entities/chat-token.entity';
 import { ChatSession } from 'apps/voserver/src/entities/chat-session.entity';
 import { Query } from '@nestjs/common';
@@ -11,10 +10,8 @@ export type ChatRoomConnection = {
 
 export type ChatRoom = {
     id: string
-    moderator: string
     name: string
     description: string,
-    connection:ChatRoomConnection
 }
 
 export type ChatRepositoryDataType = {
@@ -27,31 +24,9 @@ export class ChatRepository {
     
     chatRepository:ChatRepositoryDataType;
 
-    constructor() {
-        this.chatRepository = {
-            rooms: Repository.rooms,
-            name: Repository.name,
-            description:Repository.description
-        } 
-    }
-
-    fetchRooms(){
-        console.log("fetchRooms: TODO: let's query the data using servers graphql")
-        const response = await this.fetchQuery("{SessionList { id sessionId name role expires } }");
-
-        /*/const response = await fetch("https://jsonplaceholder.typicode.com/posts",{ headers: {'Content-Type': 'application/json'}});
-        /const body = {"query": "{token(id:2){id sessionId name role expires token}}"};*/
-        
-        /*const query = {query: "{tokenList { id sessionId name role expires } }"};
-        const response = await fetch(   "http://localhost:3333/graphql",
-                                        { 
-                                            method: 'POST',
-                                            headers: {'Content-Type': 'application/json'},
-                                            body:JSON.stringify(query)
-                                        });
-        
-        */
-        console.log(await response.json());
+    public async fetchRooms(){
+        const response = await this.fetchQuery("{sessions{id,name,description,mediaMode,archiveMode,active,apiKey}}");
+       return await response.json();
     }
 
     async fetchQuery(queryText: string){
@@ -71,34 +46,8 @@ export class ChatRepository {
         console.log("fetchTokens: Let's query the data using servers graphql")
         const response = await this.fetchQuery("{tokenList { id sessionId name role expires } }");
 
-        /*/const response = await fetch("https://jsonplaceholder.typicode.com/posts",{ headers: {'Content-Type': 'application/json'}});
-        /const body = {"query": "{token(id:2){id sessionId name role expires token}}"};*/
-        
-        /*const query = {query: "{tokenList { id sessionId name role expires } }"};
-        const response = await fetch(   "http://localhost:3333/graphql",
-                                        { 
-                                            method: 'POST',
-                                            headers: {'Content-Type': 'application/json'},
-                                            body:JSON.stringify(query)
-                                        });
-        
-        */
-        console.log(await response.json());
-        
+        return await response.json();
     
-    return response;
-
-
-         /*const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'React POST Request Example' })
-    };
-    fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
-        .then(response => response.json())
-        .then(data => this.setState({ postId: data.id }));*/
-
-
     }
 
 
@@ -126,8 +75,20 @@ export class ChatRepository {
         const index = this.indexOfRoomById(id);
         return index < 0? null : this.chatRepository.rooms[index];
     }
-    public getRooms():Array<ChatRoom> {
-        return this.chatRepository.rooms;
+    public async getRooms():Promise<Array<ChatRoom>> {
+        const rooms: ChatRoom[] = [];
+
+        const response = await this.fetchRooms();
+        console.log(response.data)
+        response?.data?.sessions.forEach(element => {
+            rooms.push({
+                id:element.id,
+                name:element.name,
+                description:element.description,
+            });
+        });
+        console.log(rooms)
+        return rooms;
     }
 
     

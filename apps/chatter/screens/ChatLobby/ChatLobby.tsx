@@ -3,22 +3,25 @@ import React, { useEffect, useState } from 'react';
 import {
     Message,
     ChatRepository,
-    ChatRoomList
+    ChatRoomList,
+    ChatRoom
 } from '../../components';
-import type { ChatRoom as ChatRoomType} from '../../components';
-
 
 export function ChatLobby() {
     const repo = new ChatRepository();
 
-    const [rooms, setRooms] = useState<Array<ChatRoomType>>(null);
+    const [rooms, setRooms] = useState<Array<ChatRoom>>(null);
     useEffect(() => {
-        const getRooms = () => {
-            setRooms(repo.getRooms());
+        const  getRooms =  () => {
+            repo.getRooms()
+            .then(rooms=>setRooms(rooms));
         }
         getRooms();
     }, [])
 
+    if (rooms === null) {
+        return <div>Loading...</div>
+    }
     return (
         <div>
             <Message
