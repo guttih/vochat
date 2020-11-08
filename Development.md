@@ -59,22 +59,16 @@ Follow these instructions if you want to install it.
 **The scripts have not been created** but this is how you would run them.
 
 Go to the root of the project and do the following.
-I need to do these commands in git-bash for it to work
+I need to do these commands in git-bash for it to work.
 
-Goto data folder
+Change to the data vochat directory and run these two scripts in order to insert
+some test data to to the database.
 ```shell
 cd ./data/vochat
+docker cp sessions.sql postgres:/docker-entrypoint-initdb.d/sessions.sql && docker exec -u postgres postgres psql vochat postgres -f docker-entrypoint-initdb.d/sessions.sql
+docker cp tokens.sql postgres:/docker-entrypoint-initdb.d/tokens.sql && docker exec -u postgres postgres psql vochat postgres -f docker-entrypoint-initdb.d/tokens.sql
 ```
 
-Create table moderators and add data
-```shell
-docker cp moderators.sql postgres:/docker-entrypoint-initdb.d/moderators.sql && docker exec -u postgres postgres psql vochat postgres -f docker-entrypoint-initdb.d/moderators.sql
-```
-
-Create table rooms and add data
-```shell
-docker cp rooms.sql postgres:/docker-entrypoint-initdb.d/rooms.sql && docker exec -u postgres postgres psql vochat postgres -f docker-entrypoint-initdb.d/rooms.sql
-```
 
 ## Starting the apps
 There are two apps.  The client (web app/frontend) is called **chatter** and the 
